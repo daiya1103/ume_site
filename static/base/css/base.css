@@ -1,0 +1,12 @@
+@import url('./output.css');
+@import url('./croppie.css');
+@import url('./index.css');
+
+body {
+    font-family: 'ピラギノ角ゴ';
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}

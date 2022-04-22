@@ -1,0 +1,19 @@
+.search_box {
+    display: inline-block; 
+    position: relative;
+    }
+
+.search_box::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    background: url('./image/search.svg') no-repeat center center / auto 100%;
+    display: inline-block;
+    position: absolute;
+    top: 9px;
+    left: 18px;
+    }
+
+.search_box input {
+    padding: 3px 0 3px 2em;
+    }

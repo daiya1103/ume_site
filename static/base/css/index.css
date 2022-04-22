@@ -1,0 +1,46 @@
+.icon {
+    width:100px;
+	height:100px;
+	object-fit:cover;
+	border-radius:50%;
+}
+
+.menu {
+    margin: 0% 10% 0% 10%;
+}
+
+.link-box {
+    text-align: center;
+}
+
+.link-box .link-select {
+    width: 100%;
+    padding: 50px 0px 50px 0px;
+}
+
+.menu-bar {
+    text-align: center;
+    font-size: 13px;
+    padding: 15px 0px 0px 0px;
+}
+
+.visionboard{
+    max-width: 100%;
+    height: auto;
+}
+
+.select-btn-y {
+    border: 1px solid #f0e68c;
+}
+
+.select-btn-g {
+    border: 1px solid #ff8c00;
+}
+
+.select-btn-r {
+    border: 1px solid #ffa07a;
+}
+
+.select-btn-b {
+    border: 1px solid #ffc0cb;
+}

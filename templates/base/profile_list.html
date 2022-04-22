@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>プロフィールリスト</h1>
+
+<div class="center-block">
+{% for profile in object_list %}
+    <a href="{% url 'base:profile-detail' profile.pk %}">{{profile.name}}{{ profile.pk }}</p>
+{% endfor %}
+</div>
+
+{% endblock content %}

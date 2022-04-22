@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'base:index' %}">ウメカリ</a>
+        <div class="dflex me-4">
+        <ul class="navbar-nav">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'base:logout' %}">ログアウト</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'base:login' %}">
+                    ログイン
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+        </div>
+    </div>
+</nav>
+<div class="row menu">
+    <div class="col-lg-3"></div>
+    <div class="col-4 col-lg-2 menu-bar">
+        <a href="{% url 'base:index' %}">ホーム</a>
+    </div>
+    <div class="col-4 col-lg-2 menu-bar">
+        <a class="" href="{% url 'base:profile-list' %}">ウメカリメンバー</a>
+    </div>
+    <div class="col-4 col-lg-2 menu-bar">
+        <a class="" href="{% url 'base:output-list' %}">みんなの投稿</a>
+    </div>
+    <div class="col-lg-3"></div>
+</div>
+<hr>

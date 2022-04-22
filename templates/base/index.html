@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+<div class="row">
+    <div class="col-lg-6 bg-light">
+        <div class="row">
+            <div class="col-lg-6 p-4">
+                <div class="row">
+                    <div class="col-4 col-lg-12">
+                        {% if user.profile.icon %}
+                        <img src="{{ user.profile.icon.url }}" alt=""  class="icon d-block mx-auto">
+                        {% else %}
+                        <img src="{% static 'base/images/default-icon.svg' %}" class="icon d-block mx-auto">
+                        {% endif %}
+                    </div>
+                    <div class="col-8 col-lg-12">
+                        <h3 class="pt-2">{{user.profile.name}}</h3>
+                        <p class="pt-3">{{user.profile.introduction}}</p>
+                        <a href="{% url 'base:profile' %}">プロフィール変更</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 p-4 align-items-center">
+                <p class="text-center">ビジョンボード</p>
+                {% if user.profile.dream %}
+                <img src="{{ user.profile.dream.url }}" alt="" class="visionboard d-block mx-auto">
+                {% else %}
+                <img src="{% static 'base/images/default-icon.svg' %}" class="visionboard d-block mx-auto">
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 bg-secondary">
+        <div class="p-3">
+            Column
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-6 col-lg-4 link-box select-btn-y">
+        <a href="{% url 'base:nippou-create' %}" class="">
+            <div class="link-select">
+                日報<br>提出
+            </div>
+        </a>
+    </div>
+    <div class="col-6 col-lg-4 link-box select-btn-g">
+        <a href="{% url 'base:output-create' %}" class="">
+            <div class="link-select">
+                アウトプット<br>記入
+            </div>
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6 col-lg-4 link-box select-btn-r">
+        <a href="https://ume-school.com/" class="">
+            <div class="link-select">
+                コンテンツ<br>サイトへ
+            </div>
+        </a>
+    </div>
+    <div class="col-6 col-lg-4 link-box  select-btn-b">
+        <a href="{% url 'base:nippou-list' %}" class="">
+            <div class="link-select">
+                日報<br>一覧
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}

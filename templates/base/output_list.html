@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="search_box col-sm-1">
+        <form action="" method="get">
+            <input name="query" value="{{ request.GET.query }}" type="text" placeholder="気になることを検索">
+        </form>
+    </div>
+</div>
+<hr>
+{% for output in object_list %}
+<div>
+    <small>
+    <a href="{% url 'base:profile-detail' output.user.pk %}">
+        {{ output.user.profile.name }}
+    </a>
+    </small>
+</div>
+<a href="{% url 'base:output-detail' output.pk %}">{{output.question | truncatechars:30}}</a>
+<hr>
+{% endfor %}
+
+{% endblock %}

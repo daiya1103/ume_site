@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for nippou in object_list %}
+
+<h2>{{nippou.date}}の日報</h2>
+<small>投稿者 : <a href="{% url 'base:profile-detail' nippou.user.pk %}">{{ nippou.user.profile.name }}</a></small>
+<p>販売個数 : {{nippou.sales}}個</p>
+<p>日利 : {{nippou.revenue}}円</p>
+<p>その他</p>
+<p>{{nippou.plan}}</p>
+
+{% endfor %}
+
+{% endblock %}
