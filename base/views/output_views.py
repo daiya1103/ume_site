@@ -1,16 +1,16 @@
 from django.urls import reverse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.views import LoginView
 from django.views.generic import ListView, CreateView, DetailView
 from django.db.models import Q
 
 from base.forms import ProfileForm
-from base.models import User, Profile, Nippou, Output
+from base.models import User, Profile, Output, OutputTagModel
 
 class OutputListView(ListView):
     model = Output
-    template_name = 'base/nippou.html'
+    template_name = 'base/output_list.html'
 
     def get_queryset(self):
         query = self.request.GET.get('query')
@@ -21,6 +21,21 @@ class OutputListView(ListView):
         else:
             object_list = Output.objects.all()
         return object_list
+
+class TagOutputListView(ListView):
+    model = Output
+    template_name = 'base/output_list.html'
+
+    def get_queryset(self):
+        slug = self.kwargs['slug']
+        self.tag = get_object_or_404(OutputTagModel, slug=slug)
+        print(self.tag)
+        return super().get_queryset().filter(tags=self.tag)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tag'] = self.tag
+        return context
 
 class OutputCreateView(CreateView):
     model = Output

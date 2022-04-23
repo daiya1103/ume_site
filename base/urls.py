@@ -12,6 +12,7 @@ from .views import (
     NippouListView,
     NippouCreateView,
     OutputListView,
+    TagOutputListView,
     OutputCreateView,
     OutputDetailView,
 )
@@ -28,6 +29,7 @@ urlpatterns = [
     path('nippou/', NippouListView.as_view(), name='nippou-list'),
     path('nippou/new/', NippouCreateView.as_view(), name='nippou-create'),
     path('output/', OutputListView.as_view(), name='output-list'),
+    path('output/<str:slug>', TagOutputListView.as_view(), name='tagoutput-list'),
     path('output/new/', OutputCreateView.as_view(), name='output-create'),
     path('output/detail/<int:pk>/', OutputDetailView.as_view(), name='output-detail')
 ]
