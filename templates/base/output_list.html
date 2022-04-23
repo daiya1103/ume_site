@@ -9,6 +9,15 @@
         </form>
     </div>
 </div>
+<div class="pt-2">
+    {% for tag in tags %}
+        <span class="badge rounded-pill bg-light text-dark m-1">
+            <a href="{%url 'base:tagoutput-list' tag.slug %}" class="text-decoration-none text-reset">
+                {{ tag.tag }}
+            </a>
+        </span>
+    {% endfor %}
+</div>
 <hr>
 {% for output in object_list %}
 <div>

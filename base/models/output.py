@@ -1,6 +1,21 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
+class OutputTagModel(models.Model):
+
+    tag = models.CharField(
+        verbose_name = 'タグ',
+        max_length = 100,
+    )
+    slug = models.SlugField(
+        verbose_name='URL',
+        unique = True,
+    )
+
+    def __str__(self):
+        return self.tag
+
+
 class Output(models.Model):
     user = models.ForeignKey(
         get_user_model(),
@@ -25,6 +40,10 @@ class Output(models.Model):
     updated_at = models.DateTimeField(
         verbose_name = '更新日',
         auto_now = True
+    )
+
+    tags = models.ManyToManyField(
+        OutputTagModel,
     )
 
     def __str__(self):

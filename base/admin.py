@@ -1,12 +1,25 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from base.forms import UserCreationForm
-from base.models import User, Profile, Nippou
-from base.models.output import Output
+from base.models import (User,
+                        Profile,
+                        Nippou,
+                        Output,
+                        OutputTagModel
+                        )
 
 class ProfileInline(admin.StackedInline):
     model = Profile
     can_delete = False
+
+class OutputAdmin(admin.ModelAdmin):
+    list_display = (
+        'question',
+        'description',
+        'created_at',
+        'updated_at',
+    )
+    search_fields = ('question', 'description')
 
 class CustomUserAdmin(UserAdmin):
     inlines = (ProfileInline,)
@@ -43,4 +56,5 @@ class CustomUserAdmin(UserAdmin):
 
 admin.site.register(User, CustomUserAdmin)
 admin.site.register(Nippou)
-admin.site.register(Output)
+admin.site.register(Output, OutputAdmin)
+admin.site.register(OutputTagModel)
