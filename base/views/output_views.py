@@ -12,15 +12,25 @@ class OutputListView(ListView):
     model = Output
     template_name = 'base/output_list.html'
 
+class SearchOutputListView(ListView):
+    model = Output
+    template_name = 'base/output_list.html'
+
     def get_queryset(self):
-        query = self.request.GET.get('query')
-        if query:
+        self.query = self.request.GET.get('query')
+        if self.query:
             object_list = Output.objects.filter(
-                Q(question__icontains=query) | Q(description__icontains=query)
+                Q(question__icontains=self.query) | Q(description__icontains=self.query)
             )
         else:
             object_list = Output.objects.all()
         return object_list
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['query'] = self.query
+        return 
+
 
 class TagOutputListView(ListView):
     model = Output
@@ -29,13 +39,13 @@ class TagOutputListView(ListView):
     def get_queryset(self):
         slug = self.kwargs['slug']
         self.tag = get_object_or_404(OutputTagModel, slug=slug)
-        print(self.tag)
         return super().get_queryset().filter(tags=self.tag)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['tag'] = self.tag
         return context
+
 
 class OutputCreateView(CreateView):
     model = Output

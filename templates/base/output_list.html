@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="search_box col-sm-1">
-        <form action="" method="get">
+        <form action="{% url 'base:searchoutput-list' %}" method="get">
             <input name="query" value="{{ request.GET.query }}" type="text" placeholder="気になることを検索">
         </form>
     </div>
