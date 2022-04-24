@@ -35,6 +35,7 @@ def profileform(request):
             elif not profile.dream:
                 profile.dream = dream
             profile.save()
+            print(profile.dream)
             messages.success(request, 'プロフィールが変更されました')
     else:
         form = ProfileForm(request.POST, request.FILES)

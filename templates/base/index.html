@@ -34,7 +34,12 @@
 
     <div class="col-lg-6 bg-secondary">
         <div class="p-3">
-            Column
+            <p>
+                今日は{% now 'Y' %}年{% now 'n' %}月{% now 'd' %}日です。
+            </p>
+            <p>
+                目標金額: {{user.profile.target}}万円
+            </p>
         </div>
     </div>
 </div>
