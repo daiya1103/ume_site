@@ -129,8 +129,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'base.User'
 
-LOGIN_REDIRECT_URL = 'index'
-LOGOUT_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'base:index'
+LOGOUT_REDIRECT_URL = 'base:index'
 
 from django.contrib import messages
 MESSAGE_TAGS = {
