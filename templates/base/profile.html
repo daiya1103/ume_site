@@ -1,4 +1,48 @@
 {% extends 'base.html' %}
-{% block content %}
-{{ profile.name }}
-{% endblock content %}
+{% load static %}
+{% block header %}
+<div class="container">
+    「{{profile.name}}」さんのプロフィール
+</div>
+<div class="row">
+    <div class="col-lg-6 bg-light">
+        <div class="row">
+            <div class="col-lg-6 p-4">
+                <div class="row">
+                    <div class="col-4 col-lg-12">
+                        {% if profile.icon %}
+                        <img src="{{ profile.icon.url }}" alt=""  class="icon d-block mx-auto">
+                        {% else %}
+                        <img src="{% static 'base/images/default-icon.svg' %}" class="icon d-block mx-auto">
+                        {% endif %}
+                    </div>
+                    <div class="col-8 col-lg-12">
+                        <h3 class="pt-2">{{profile.name}}</h3>
+                        {% if profile.introduction %}
+                            <p class="pt-3">{{profile.introduction}}</p>
+                        {% else %}
+                            <p class="pt-3">未設定</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 p-4 align-items-center">
+                <p class="text-center">ビジョンボード</p>
+                {% if profile.dream %}
+                <img src="{{ profile.dream.url }}" alt="" class="visionboard d-block mx-auto">
+                {% else %}
+                <img src="{% static 'base/images/default-icon.svg' %}" class="visionboard d-block mx-auto">
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 bg-secondary">
+        <div class="p-3">
+            <p>
+                目標金額: {{profile.target}}万円
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
