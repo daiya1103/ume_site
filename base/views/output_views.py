@@ -13,13 +13,21 @@ class OutputListView(ListView):
     template_name = 'base/output_list.html'
 
     def get_queryset(self):
+        object_list = Output.objects.all()
         query = self.request.GET.get('query')
         if query:
-            object_list = Output.objects.filter(
-                Q(question__icontains=query) | Q(description__icontains=query)
-            )
-        else:
-            object_list = Output.objects.all()
+            if ' ' in query or '　' in query:
+                queries = query.split()
+                print(queries)
+                for query in queries:
+                    print(query)
+                    object_list = object_list.filter(
+                        Q(question__icontains=query) | Q(description__icontains=query)
+                    )
+            else:
+                object_list = object_list.filter(
+                    Q(question__icontains=query) | Q(description__icontains=query)
+                )
         return object_list
 
 class TagOutputListView(ListView):
