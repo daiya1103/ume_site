@@ -21,7 +21,11 @@
 .menu-bar {
     text-align: center;
     font-size: 13px;
-    padding: 15px 0px 0px 0px;
+    padding: 15px 0px 15px 0px;
+}
+
+.menu-bar:hover{
+    background-color: darkgray;
 }
 
 .visionboard{
@@ -44,3 +48,4 @@
 .select-btn-b {
     border: 1px solid #ffc0cb;
 }
+
