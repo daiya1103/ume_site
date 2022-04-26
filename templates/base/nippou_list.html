@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="switch-btn-container">
+    <a href="{% url 'base:nippou-list' %}">
+        <div id="nippou-btn" class="switch-btn">日報</div>
+    </a>
+    <a href="{% url 'base:output-list' %}">
+        <div id="output-btn" class="switch-btn">アウトプット</div>
+    </a>
+</div>
 
 {% for nippou in object_list %}
 

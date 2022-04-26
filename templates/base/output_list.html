@@ -1,13 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="switch-btn-container">
+    <a href="{% url 'base:nippou-list' %}">
+        <div id="nippou-btn" class="switch-btn">日報</div>
+    </a>
+    <a href="{% url 'base:output-list' %}">
+        <div id="output-btn" class="switch-btn">アウトプット</div>
+    </a>
+</div>
 
-<div class="row">
-    <div class="search_box col-sm-1">
-        <form action="" method="get">
-            <input name="query" value="{{ request.GET.query }}" type="text" placeholder="気になることを検索">
-        </form>
-    </div>
+<div class="search_box col-sm-1">
+    <form action="" method="get">
+        <input name="query" value="{{ request.GET.query }}" type="text" placeholder="気になることを検索">
+    </form>
 </div>
 <div class="pt-2">
     {% for tag in tags %}

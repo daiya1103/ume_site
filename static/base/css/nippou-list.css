@@ -1,0 +1,24 @@
+.switch-btn-container {
+    margin: 0 auto 20px auto;
+    width: max-content;
+}
+
+.switch-btn {
+    width: 150px;
+    float: left;
+    padding: 0 10px 0 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#nippou-btn {
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+    border: 1px solid black;
+}
+#output-btn {
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    border: 1px solid black;
+    border-left: hidden;
+}

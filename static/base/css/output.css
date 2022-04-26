@@ -1,5 +1,4 @@
 .search_box {
-    display: inline-block; 
     position: relative;
     }
 
@@ -10,8 +9,8 @@
     background: url('./image/search.svg') no-repeat center center / auto 100%;
     display: inline-block;
     position: absolute;
-    top: 9px;
-    left: 18px;
+    top: 34px;
+    left: 12px;
     }
 
 .search_box input {
