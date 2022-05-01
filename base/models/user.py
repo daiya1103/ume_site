@@ -72,6 +72,24 @@ class User(AbstractBaseUser):
         # Simplest possible answer: All admins are staff
         return self.is_admin
 
+class Connection(models.Model):
+    teacher = models.ForeignKey(
+        User,
+        related_name='teacher',
+        on_delete=models.CASCADE
+    )
+
+    student = models.ForeignKey(
+        User,
+        related_name='student',
+        on_delete=models.CASCADE
+    )
+
+    date_created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "{} : {}".format(self.teacher.username, self.student.username)
+
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
