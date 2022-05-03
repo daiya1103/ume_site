@@ -13,7 +13,6 @@ from django.conf import settings
 
 from base.forms import ProfileForm
 from base.models import User, Profile
-
 class MyLoginView(LoginView):
     template_name = 'base/login.html'
 

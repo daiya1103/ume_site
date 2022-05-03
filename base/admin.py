@@ -6,7 +6,6 @@ from base.models import (User,
                         Nippou,
                         Output,
                         OutputTagModel,
-                        Connection,
                         )
 
 class ProfileInline(admin.StackedInline):
@@ -37,6 +36,7 @@ class CustomUserAdmin(UserAdmin):
                 'username',
                 'is_active',
                 'is_admin',
+                'teacher',
             )
         })
     )
@@ -59,4 +59,3 @@ admin.site.register(User, CustomUserAdmin)
 admin.site.register(Nippou)
 admin.site.register(Output, OutputAdmin)
 admin.site.register(OutputTagModel)
-admin.site.register(Connection)

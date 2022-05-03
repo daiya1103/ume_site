@@ -47,6 +47,14 @@ class User(AbstractBaseUser):
         blank=True,
     )
 
+    teacher = models.ForeignKey(
+        'self',
+        on_delete=models.SET_NULL,
+        related_name="student",
+        null=True,
+        blank=True,
+    )
+
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
@@ -71,24 +79,6 @@ class User(AbstractBaseUser):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_admin
-
-class Connection(models.Model):
-    teacher = models.ForeignKey(
-        User,
-        related_name='teacher',
-        on_delete=models.CASCADE
-    )
-
-    student = models.ForeignKey(
-        User,
-        related_name='student',
-        on_delete=models.CASCADE
-    )
-
-    date_created = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return "{} : {}".format(self.teacher.username, self.student.username)
 
 from django.db.models.signals import post_save
 from django.dispatch import receiver
