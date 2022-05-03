@@ -3,6 +3,7 @@
 @import url('./index.css');
 @import url('./profile-list.css');
 @import url('./nippou-list.css');
+@import url('./navigation.css');
 
 body {
     font-family: 'ピラギノ角ゴ';
