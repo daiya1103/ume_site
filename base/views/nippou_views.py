@@ -6,15 +6,16 @@ from django.shortcuts import render
 from django.contrib import messages
 from django.contrib.auth.views import LoginView
 from django.views.generic import ListView, CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from base.forms import ProfileForm
 from base.models import User, Profile, Nippou
 
-class NippouListView(ListView):
+class NippouListView(LoginRequiredMixin, ListView):
     model = Nippou
     template_name = 'base/nippou.html'
 
-class NippouCreateView(CreateView):
+class NippouCreateView(LoginRequiredMixin, CreateView):
     model = Nippou
     fields = (
         'date',

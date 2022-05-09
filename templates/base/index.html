@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load base_tags %}
 
 {% block header %}
+{% if user.is_authenticated %}
 <div class="row profdiv">
     <div class="col-lg-6 bg-light">
         <div class="row">
@@ -38,7 +40,7 @@
                 今日は{% now 'Y' %}年{% now 'n' %}月{% now 'd' %}日です。
             </p>
             <p>
-                目標金額: {{user.profile.target}}万円
+                目標金額: {{user.profile.target}}円
             </p>
             <p>
                 担当講師: {{ user.teacher.profile.name }}先生
@@ -46,22 +48,29 @@
             <p>
                 本日までの合計利益: {{sum_of_revenue}}円
             </p>
+            <p>
+                目標達成率: {% percentage sum_of_revenue user.profile.target  %}%
+            </p>
         </div>
     </div>
 </div>
+{% else %}
+ログインしてください！
+{% endif %}
 {% endblock %}
 
 {% block content %}
+{% if user.is_authenticated %}
 <div class="row">
     <div class="col-6 col-lg-4 link-box select-btn-y">
-        <a href="{% url 'base:nippou-create' %}" class="">
+        <a href="{% url 'base:nippou-create' %}">
             <div class="link-select">
                 日報<br>提出
             </div>
         </a>
     </div>
     <div class="col-6 col-lg-4 link-box select-btn-g">
-        <a href="{% url 'base:output-create' %}" class="">
+        <a href="{% url 'base:output-create' %}">
             <div class="link-select">
                 アウトプット<br>記入
             </div>
@@ -70,18 +79,19 @@
 </div>
 <div class="row">
     <div class="col-6 col-lg-4 link-box select-btn-r">
-        <a href="https://ume-school.com/" class="">
+        <a href="https://ume-school.com/">
             <div class="link-select">
                 コンテンツ<br>サイトへ
             </div>
         </a>
     </div>
     <div class="col-6 col-lg-4 link-box  select-btn-b">
-        <a href="{% url 'base:nippou-list' %}" class="">
+        <a href="{% url 'base:nippou-list' %}">
             <div class="link-select">
                 日報<br>一覧
             </div>
         </a>
     </div>
 </div>
+{% endif %}
 {% endblock %}

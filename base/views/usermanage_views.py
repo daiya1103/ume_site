@@ -6,23 +6,28 @@ import base64
 import numpy as np
 import os
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth.views import LoginView
 from django.views.generic import ListView, DetailView, UpdateView
 from django.utils import timezone
 from django.http import JsonResponse
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from base.forms import ProfileForm
 from base.models import User, Profile
+
 class MyLoginView(LoginView):
+    redirect_authenticated_user = True
     template_name = 'base/login.html'
 
     def form_valid(self, form):
         messages.success(self.request, 'ログイン完了！')
         return super().form_valid(form)
 
+@login_required
 def profileform(request):
     profile = request.user.profile
     icon = profile.icon
@@ -34,20 +39,21 @@ def profileform(request):
             profile.user = request.user
             if not profile.icon:
                 profile.icon = icon
-            elif not profile.dream:
+            if not profile.dream:
                 profile.dream = dream
             profile.save()
             print(profile.dream)
             messages.success(request, 'プロフィールが変更されました')
+            return redirect('base:index')
     else:
         form = ProfileForm(request.POST, request.FILES)
     return render(request, 'base/profile_form.html', {'form': form})
 
-class ProfileListView(ListView):
+class ProfileListView(LoginRequiredMixin, ListView):
     model = Profile
     template_name = 'base/profile_list.html'
 
-class ProfileDetailView(DetailView):
+class ProfileDetailView(LoginRequiredMixin, DetailView):
     model = Profile
     template_name = 'base/profile.html'
 
@@ -56,6 +62,7 @@ class ProfileDetailView(DetailView):
         context['profile'] = Profile.objects.get(pk=self.kwargs['pk'])
         return context
 
+@login_required
 def profileImageUpload(request):
     ''' プロフィール編集画面からPOSTされた画像データの保存処理 '''
     # POSTされたb64データを元の画像データにデコード

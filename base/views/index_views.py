@@ -2,13 +2,14 @@ from django.shortcuts import render
 from django.views.generic import TemplateView, ListView
 from django_pandas.io import read_frame
 from base.models import User, Nippou
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 import pandas as pd
 import datetime
 
 # Create your views here.
 
-class Index(ListView):
+class Index(LoginRequiredMixin, ListView):
     template_name = 'base/index.html'
     model = User
 

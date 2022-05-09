@@ -7,11 +7,12 @@ from django.contrib import messages
 from django.contrib.auth.views import LoginView
 from django.views.generic import ListView, CreateView, DetailView
 from django.db.models import Q
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from base.forms import ProfileForm
 from base.models import User, Profile, Output, OutputTagModel
 
-class OutputListView(ListView):
+class OutputListView(LoginRequiredMixin, ListView):
     model = Output
     template_name = 'base/output_list.html'
 
@@ -33,7 +34,7 @@ class OutputListView(ListView):
                 )
         return object_list
 
-class TagOutputListView(ListView):
+class TagOutputListView(LoginRequiredMixin, ListView):
     model = Output
     template_name = 'base/output_list.html'
 
@@ -47,7 +48,7 @@ class TagOutputListView(ListView):
         context['tag'] = self.tag
         return context
 
-class OutputCreateView(CreateView):
+class OutputCreateView(LoginRequiredMixin, CreateView):
     model = Output
     fields = (
         'question',
@@ -65,7 +66,7 @@ class OutputCreateView(CreateView):
         return reverse('base:index')
 
 
-class OutputDetailView(DetailView):
+class OutputDetailView(LoginRequiredMixin, DetailView):
     model = Output
     template_name = 'base/output_detail.html'
 

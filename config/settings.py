@@ -69,6 +69,9 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'base.context_processors.common',
             ],
+            'libraries': {
+                'base_tags': 'base.templatetags.base_tags'
+            }
         },
     },
 ]
@@ -132,6 +135,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'base.User'
 
+LOGIN_URL = "base:login"
 LOGIN_REDIRECT_URL = 'base:index'
 LOGOUT_REDIRECT_URL = 'base:index'
 
