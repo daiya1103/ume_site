@@ -1,3 +1,6 @@
+import sys
+sys.dont_write_bytecode = True
+
 from django.urls import reverse
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
@@ -37,7 +40,6 @@ class TagOutputListView(ListView):
     def get_queryset(self):
         slug = self.kwargs['slug']
         self.tag = get_object_or_404(OutputTagModel, slug=slug)
-        print(self.tag)
         return super().get_queryset().filter(tags=self.tag)
 
     def get_context_data(self, **kwargs):

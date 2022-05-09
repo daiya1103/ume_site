@@ -1,8 +1,8 @@
 @import url('./output.css');
 @import url('./croppie.css');
-@import url('./index.css');
 @import url('./profile-list.css');
 @import url('./nippou-list.css');
+@import url('./navigation.css');
 
 body {
     font-family: 'ピラギノ角ゴ';
@@ -10,6 +10,10 @@ body {
 }
 
 a {
+    text-decoration: none;
+    color: black;
+}
+a:hover {
     text-decoration: none;
     color: black;
 }

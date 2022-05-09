@@ -1,3 +1,6 @@
+import sys
+sys.dont_write_bytecode = True
+
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin

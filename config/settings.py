@@ -1,3 +1,6 @@
+import sys
+sys.dont_write_bytecode = True
+
 """
 Django settings for config project.
 
@@ -136,7 +139,7 @@ from django.contrib import messages
 MESSAGE_TAGS = {
     messages.ERROR: 'rounded-0 alert alert-danger',
     messages.WARNING: 'rounded-0 alert alert-warning',
-    messages.SUCCESS: 'rounded-0 alert alert-success',
+    messages.SUCCESS: 'rounded-0 alert alert-warning',
     messages.INFO: 'rounded-0 alert alert-info',
     messages.DEBUG: 'rounded-0 alert alert-secondary',
     }

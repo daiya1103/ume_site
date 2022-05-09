@@ -1,3 +1,6 @@
+import sys
+sys.dont_write_bytecode = True
+
 from django.db import models
 from django.contrib.auth import get_user_model
 
@@ -20,7 +23,8 @@ class Nippou(models.Model):
     plan = models.TextField(
         verbose_name='その他',
         default='',
-        null=True
+        null=True,
+        blank=True,
     )
 
     date = models.DateField(

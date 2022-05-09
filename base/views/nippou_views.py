@@ -1,3 +1,6 @@
+import sys
+sys.dont_write_bytecode = True
+
 from django.urls import reverse
 from django.shortcuts import render
 from django.contrib import messages

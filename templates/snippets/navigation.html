@@ -20,14 +20,26 @@
 </nav>
 <div class="row menu">
     <div class="col-lg-3"></div>
-    <div class="col-4 col-lg-2 menu-bar">
-        <a href="{% url 'base:index' %}">ホーム</a>
+    <div class="col-4 col-lg-2">
+        <a href="{% url 'base:index' %}">
+            <div class="menu-btn">
+                ホーム
+            </div>
+        </a>
     </div>
-    <div class="col-4 col-lg-2 menu-bar">
-        <a class="" href="{% url 'base:profile-list' %}">ウメカリメンバー</a>
+    <div class="col-4 col-lg-2">
+        <a class="" href="{% url 'base:profile-list' %}">
+            <div class="menu-btn">
+                ウメカリメンバー
+            </div>
+        </a>
     </div>
-    <div class="col-4 col-lg-2 menu-bar">
-        <a class="" href="{% url 'base:nippou-list' %}">みんなの投稿</a>
+    <div class="col-4 col-lg-2">
+        <a class="" href="{% url 'base:nippou-list' %}">
+        <div class="menu-btn">
+            みんなの投稿
+        </div>
+        </a>
     </div>
     <div class="col-lg-3"></div>
 </div>

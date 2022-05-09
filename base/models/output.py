@@ -1,3 +1,6 @@
+import sys
+sys.dont_write_bytecode = True
+
 from django.db import models
 from django.contrib.auth import get_user_model
 

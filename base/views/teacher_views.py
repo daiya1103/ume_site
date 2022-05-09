@@ -1,3 +1,6 @@
+import sys
+sys.dont_write_bytecode = True
+
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.views import LoginView

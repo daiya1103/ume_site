@@ -18,14 +18,14 @@
     padding: 50px 0px 50px 0px;
 }
 
-.menu-bar {
+.menu-btn {
     text-align: center;
     font-size: 13px;
     padding: 15px 0px 15px 0px;
 }
 
-.menu-bar:hover{
-    background-color: darkgray;
+.menu-btn:hover{
+    background-color: #c0af98;
 }
 
 .visionboard{

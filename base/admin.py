@@ -1,3 +1,6 @@
+import sys
+sys.dont_write_bytecode = True
+
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from base.forms import UserCreationForm

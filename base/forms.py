@@ -1,3 +1,6 @@
+import sys
+sys.dont_write_bytecode = True
+
 from django import forms
 from django.contrib.auth import get_user_model
 from .models import Profile

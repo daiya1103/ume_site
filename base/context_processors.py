@@ -1,3 +1,6 @@
+import sys
+sys.dont_write_bytecode = True
+
 from django.db.models import Count, Q
 
 from .models import OutputTagModel
