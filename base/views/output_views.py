@@ -65,7 +65,6 @@ class OutputCreateView(LoginRequiredMixin, CreateView):
     def get_success_url(self):
         return reverse('base:index')
 
-
 class OutputDetailView(LoginRequiredMixin, DetailView):
     model = Output
     template_name = 'base/output_detail.html'

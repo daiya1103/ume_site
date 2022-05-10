@@ -8,3 +8,9 @@ from django.views.generic import ListView, DetailView, UpdateView
 from django.utils import timezone
 from django.http import JsonResponse
 from django.conf import settings
+
+from base.models import User
+
+class StudentListView(ListView):
+    model = User
+    template_name = 'base/teacher.html'
