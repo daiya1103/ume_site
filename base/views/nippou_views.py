@@ -15,6 +15,10 @@ class NippouListView(LoginRequiredMixin, ListView):
     model = Nippou
     template_name = 'base/nippou.html'
 
+    def get_queryset(self):
+        object_list = super().get_queryset()
+        return object_list.order_by('-date')
+
 class NippouCreateView(LoginRequiredMixin, CreateView):
     model = Nippou
     fields = (

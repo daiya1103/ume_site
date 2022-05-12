@@ -14,12 +14,7 @@
     <textarea class="form-control" type="text" name="introduction">{{ user.profile.introduction }}</textarea>
     <label>目標金額</label>
     <div class="col-auto">
-        <input type="number" class="form-control" aria-describedby="passwordHelpInline" name="target" value="{{ user.profile.target }}">
-    </div>
-    <div class="col-auto">
-        <span id="passwordHelpInline" class="form-text">
-            万円
-        </span>
+        <input type="number" class="form-control" name="target" value="{{ user.profile.target }}">
     </div>
     <label>ビジョンボード</label>
     <input class="form-control" type="file" name="dream" value="{{ user.profile.dream }}">
